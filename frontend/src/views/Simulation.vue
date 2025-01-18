@@ -1,6 +1,5 @@
 <template>
   <div class="simulation-view">
-    <h2>仿真推演</h2>
     <div id="map" class="map-container"></div>
   </div>
 </template>
@@ -18,29 +17,39 @@ onMounted(() => {
     container: 'map',
     style: 'mapbox://styles/mapbox/satellite-v9',
     center: [116.4074, 39.9042],
-    zoom: 10
+    zoom: 10,
+    attributionControl: false,  // 禁用属性标识
+    customAttribution: null  // 禁用自定义属性
   });
 });
 </script>
 
 <style scoped>
 .simulation-view {
-  padding: 20px;
-  transition: margin-left 0.3s ease;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+  position: fixed;
+  top: 40px;  /* TabBar 高度 */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
   overflow: hidden;
-}
-
-h2 {
-  margin: 0 0 20px 0;
+  transition: left 0.5s ease;
 }
 
 .map-container {
-  flex: 1;
-  width: 100%;
-  border-radius: 8px;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  border-radius: 0;
   overflow: hidden;
+  transition: left 0.5s ease;
+}
+
+/* 隐藏所有 Mapbox 相关标识 */
+:global(.mapboxgl-control-container) {
+  display: none !important;
 }
 </style> 

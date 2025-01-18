@@ -1,13 +1,9 @@
 <template>
   <div class="ds-sidebar" :class="{ collapsed: isCollapsed }">
+    <h1 class="ds-title" :class="{ 'title-collapsed': isCollapsed }">军舆纵横</h1>
     <button class="ds-collapse-btn" @click="toggleCollapse">
       <span class="ds-collapse-icon">{{ isCollapsed ? '⟩' : '⟨' }}</span>
     </button>
-    
-    <div class="ds-sidebar-header">
-      <h1 class="ds-title">军舆纵横</h1>
-    </div>
-
     <nav class="ds-nav-menu">
       <ul>
         <li v-for="item in menuItems" :key="item.id">

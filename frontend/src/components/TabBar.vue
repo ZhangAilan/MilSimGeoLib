@@ -32,7 +32,7 @@ const currentPath = ref(route.path)
 const tabNameMap: Record<string, string> = {
   'Simulation': '仿真推演',
   'BattlefieldMap': '数字战场图谱',
-  'JointIntelligence': '实时对抗',
+  'JointIntelligence': '战场联合情报',
   'InformationCenter': '信息交流中心',
   'DefenseThinkTank': '防务智库',
   'StrategicAnalysis': '战略博弈分析',
@@ -88,72 +88,84 @@ const closeTab = (tab: Tab) => {
 
 <style scoped>
 .tab-bar {
-  background: var(--background-color);
-  border-bottom: 1px solid var(--border-color);
-  padding: 8px 16px;
-  overflow-x: auto;
+  background: #1a1f2e;
+  padding: 4px 8px 2px 8px;
+  height: 40px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
 }
 
 .tabs {
   display: flex;
-  height: 44px;
-  align-items: center;
-  gap: 8px;
+  height: 32px;
+  overflow-x: auto;
+  flex: 1;
+  gap: 4px;
 }
 
 .tab {
+  padding: 0 20px;
+  height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 20px;
-  height: 36px;
-  background: #2e3751;
-  border-radius: 18px;
   cursor: pointer;
-  user-select: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
-  overflow: hidden;
+  background: #2a2f3e;
+  color: #888;
+  min-width: 140px;
+  max-width: 240px;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  font-size: 13px;
 }
 
 .tab:hover {
-  background: #d88080;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: #3a3f4e;
+  color: #fff;
 }
 
 .tab.active {
-  background: #a82323;
-  box-shadow: 0 2px 8px rgba(16, 86, 156, 0.2);
+  background: #ffffff;
+  color: #000;
+  font-weight: 500;
 }
 
 .tab-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  margin-right: 8px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .close-btn {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.6);
-  transition: all 0.2s ease;
+  margin-left: 8px;
+  font-size: 14px;
+  opacity: 0.6;
+  transition: all 0.2s;
   line-height: 1;
 }
 
 .close-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.1);
+  opacity: 1;
 }
 
-.tab:hover .close-btn {
-  opacity: 1;
+.tabs::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+  display: none;
 }
 </style> 
